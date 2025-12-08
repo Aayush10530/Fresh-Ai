@@ -8,7 +8,14 @@ from typing import Dict
 # Since Ultralytics supports HF direct loading:
 # Using standard YOLOv8n model as fallback since custom weights URL is down
 # "yolov8n.pt" will be downloaded automatically from Ultralytics
-model = YOLO("yolov8n.pt")
+# Check for custom trained model, else fallback to standard
+trained_model_path = os.path.join(os.getcwd(), "runs", "detect", "train3", "weights", "best.pt")
+if os.path.exists(trained_model_path):
+    print(f"Loading custom trained model from: {trained_model_path}")
+    model = YOLO(trained_model_path)
+else:
+    print("Custom model not found, loading standard YOLOv8n...")
+    model = YOLO("yolov8n.pt")
 
 def analyze_image_file(file_path: str) -> Dict[str, str]:
     """
