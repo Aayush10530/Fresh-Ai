@@ -1,0 +1,6 @@
+names:
+- stain
+nc: 1
+path: D:\Projects\Major 1\laundry_data
+train: images/train
+val: images/val
