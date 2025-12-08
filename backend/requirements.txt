@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+sqlmodel
+psycopg2-binary
+python-dotenv
+python-jose[cryptography]
+passlib[bcrypt]
+fastapi-mail
+ultralytics
+opencv-python-headless
+pillow
+python-multipart
