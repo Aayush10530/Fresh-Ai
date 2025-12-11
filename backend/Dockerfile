@@ -5,11 +5,11 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    libgl1 \
-    libglib2.0-0 \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update
+RUN apt-get install -y build-essential
+RUN apt-get install -y libgl1
+RUN apt-get install -y libglib2.0-0
+RUN rm -rf /var/lib/apt/lists/*
 
 # Copy the requirements file into the container
 COPY backend/requirements.txt .
@@ -19,7 +19,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the backend code
 COPY backend/ ./backend/
-COPY .env .
+
 
 # Make port 8000 available to the world outside this container
 EXPOSE 8000

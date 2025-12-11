@@ -22,9 +22,11 @@ def analyze_image_file(file_path: str) -> Dict[str, str]:
     Analyzes an image file for clothing defects.
     Returns a dictionary with result details.
     """
-    # Run inference
-    results = model.predict(source=file_path, save=False, conf=0.25)
+    # Run inference (Lower confidence to catch distinct features)
+    results = model.predict(source=file_path, save=False, conf=0.10)
     
+    print(f"AI Debug: Raw Results for {file_path}: {results}")
+
     detected_class = "Normal"
     recommendation = "Wash & Fold"
     confidence = 0.0
